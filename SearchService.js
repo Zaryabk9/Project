@@ -27,38 +27,46 @@ const ServiceSearch = () => {
 
   return (
     <div>
-      <form onSubmit={handleSubmit}>
+  <form onSubmit={handleSubmit} className="mb-3">
+    <div className="row bg-dark text-white p-2 mb-3">
+      <div className="col">
         <label>Title:</label>
-        <input type="text" value={title} onChange={(e) => setTitle(e.target.value)} />
-
+        <input type="text" value={title} onChange={(e) => setTitle(e.target.value)} className="form-control" />
+      </div>
+      <div className="col">
         <label>Description:</label>
-        <input type="text" value={description} onChange={(e) => setDescription(e.target.value)} />
-
+        <input type="text" value={description} onChange={(e) => setDescription(e.target.value)} className="form-control" />
+      </div>
+      <div className="col">
         <label>Tags:</label>
-        <input type="text" value={tags} onChange={(e) => setTags(e.target.value)} />
-
-        <button type="submit">Search</button>
-      </form>
-
-      <table>
-        <thead>
-          <tr>
-            <th>Title</th>
-            <th>Description</th>
-            <th>Tags</th>
-          </tr>
-        </thead>
-        <tbody>
-          {searchResults.map((service) => (
-            <tr key={service._id}>
-              <td>{service.title}</td>
-              <td>{service.description}</td>
-              <td>{service.tags.join(', ')}</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
+        <input type="text" value={tags} onChange={(e) => setTags(e.target.value)} className="form-control" />
+      </div>
+      <div className="col-auto align-self-end">
+        <button type="submit" className="btn btn-primary">Search</button>
+      </div>
     </div>
+  </form>
+
+  <table className="table">
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>Description</th>
+        <th>Tags</th>
+      </tr>
+    </thead>
+    <tbody>
+      {searchResults.map((service) => (
+        <tr key={service._id}>
+          <td>{service.title}</td>
+          <td>{service.description}</td>
+          <td>{service.tags.join(', ')}</td>
+        </tr>
+      ))}
+    </tbody>
+  </table>
+</div>
+
   );
 };
 
